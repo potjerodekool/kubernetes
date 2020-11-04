@@ -1,0 +1,22 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: auth-server
+  labels:
+   app: auth-server
+spec:
+  selector:
+    matchLabels:  
+      app: auth-server
+  template:
+    metadata:
+      labels: 
+        app: auth-server
+    spec:
+      containers:
+      - image: evert1981/auth-server:1.0
+        imagePullPolicy: Always
+        name: auth-server
+        ports:
+        - containerPort: 8080
+          name: http      

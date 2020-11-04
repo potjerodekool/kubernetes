@@ -1,1 +1,1 @@
-microkmicrok8s enable ingress dns
+microk8s enable ingress dns
