@@ -1,0 +1,22 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: login-ui
+  labels:
+   app: login-ui
+spec:
+  selector:
+    matchLabels:  
+      app: login-ui
+  template:
+    metadata:
+      labels: 
+        app: login-ui
+    spec:
+      containers:
+      - image: evert1981/auth-server:1.0
+        imagePullPolicy: Always
+        name: login-ui
+        ports:
+        - containerPort: 80
+          name: http      
