@@ -1,3 +1,6 @@
+#Create production namespace
+kubectl create -f namespace/namespace-prod.json
+
 #Enable add-ons
 microk8s enable ingress dns
 

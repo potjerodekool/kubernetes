@@ -24,15 +24,15 @@ spec:
                 name: general-configmap
                 key: spring.datasource.url
           - name: SPRING_DATASOURCE_USERNAME
-              valueFrom:
-                secretKeyRef:
-                  name: auth-secret
-                  key: username
+            valueFrom:
+              secretKeyRef:
+                name: auth-secret
+                key: username
           - name: LOGIN_URL
-              valueFrom:
-                secretKeyRef:
-                  name: auth-secret
-                  key: login.url
+            valueFrom:
+              secretKeyRef:
+                name: auth-secret
+                key: login.url
 
           - name: SPRING_DATASOURCE_USERNAME
             valueFrom:
