@@ -14,7 +14,7 @@ spec:
         app: login-ui
     spec:
       containers:
-      - image: evert1981/auth-server:1.0
+      - image: evert1981/login-ui:latest
         imagePullPolicy: Always
         name: login-ui
         ports:
