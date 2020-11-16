@@ -5,6 +5,7 @@ metadata:
   name: login-ui
   labels:
     app: login-ui
+  namespace: general
 spec:
   selector:
     app: login-ui

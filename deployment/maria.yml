@@ -1,0 +1,45 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: maria
+spec:
+  ports:
+    - port: 3306
+  selector:
+    app: maria
+  clusterIP: None
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: maria
+spec:
+  selector:
+    matchLabels:
+      app: maria
+  strategy:
+    type: Recreate
+  template:
+    metadata:
+      labels:
+        app: maria
+    spec:
+      containers:
+        - image: mariadb:latest
+          name: maria
+          env:
+            - name: MYSQL_ROOT_PASSWORD
+              valueFrom:
+                secretKeyRef:
+                  name: maria-secret
+                  key: dbpassword
+          ports:
+            - containerPort: 3306
+              name: maria
+          volumeMounts:
+            - name: maria-persistent-storage
+              mountPath: /var/lib/mysql
+      volumes:
+        - name: maria-persistent-storage
+          persistentVolumeClaim:
+            claimName: maria-pv-claim

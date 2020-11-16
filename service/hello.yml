@@ -5,6 +5,7 @@ metadata:
   name: hello-service
   labels:
     app: hello
+  namespace: general
 spec:
   selector:
     app: hello-node

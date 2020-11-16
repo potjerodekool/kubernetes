@@ -5,6 +5,7 @@ metadata:
   name: auth-service
   labels:
     app: auth-service
+  namespace: general
 spec:
   selector:
     app: auth-server
