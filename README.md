@@ -26,6 +26,13 @@ kubectl expose deployment -n general maria --type=LoadBalancer --name=maria-ext
 kubectl get services -n general maria-ext
 ip address show
 
+
+#Create JWT secret
+## Generate random gerated base64 encoded jwtsecret and store it in the jwt-secret (replace myjwtsecret value)
+## For your local cluster just use the value from application.properties
+echo $(tr -dc A-Za-z0-9 < /dev/urandom | dd bs=100 count=1 2>/dev/null) | base64
+kubectl create secret generic jwt-secret -n general --from-literal=jwtsecret='myjwtsecret'
+
 #Create secret for auth-server
 kubectl create secret generic auth-secret -n general \
 --from-literal=dbusername=authentication \

@@ -39,6 +39,23 @@ spec:
               configMapKeyRef:
                 name: general-configmap
                 key: login.url
+          - name: JWT_SECRETKEY
+            valueFrom:
+              secretKeyRef:
+                name: jwt-secret
+                key: jwtsecret
         ports:
         - containerPort: 8080
           name: http      
+        livenessProbe:
+          httpGet:
+            path: /health
+            port: 8081
+          initialDelaySeconds: 30
+          periodSeconds: 20
+        readinessProbe:
+          httpGet:
+            path: /health
+            port: 8081
+          initialDelaySeconds: 30
+          periodSeconds: 20

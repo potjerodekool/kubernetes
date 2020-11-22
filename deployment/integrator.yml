@@ -34,11 +34,11 @@ spec:
               secretKeyRef:
                 name: integrator-secret
                 key: dbpassword
-          - name: LOGIN_URL
+          - name: JWT_SECRETKEY
             valueFrom:
-              configMapKeyRef:
-                name: general-configmap
-                key: login.url
+              secretKeyRef:
+                name: jwt-secret
+                key: jwtsecret
         ports:
         - containerPort: 8080
           name: http      
