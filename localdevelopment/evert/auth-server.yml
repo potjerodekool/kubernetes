@@ -1,0 +1,29 @@
+kind: Endpoints
+apiVersion: v1
+metadata:
+  name: auth-service
+  namespace: general
+  labels:
+    app: auth-service
+    environment: localdevelopment
+subsets:
+  - addresses:
+      - ip: 192.168.178.59
+    ports:
+      - port: 8080
+        name: http
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: auth-service
+  labels:
+    app: auth-server
+  namespace: general
+spec:
+  selector:
+    app: auth-server
+  ports:
+    - name: http
+      targetPort: 8080
+      port: 8080

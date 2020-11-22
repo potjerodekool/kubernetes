@@ -19,5 +19,8 @@ spec:
         backend:
           serviceName: login-ui
           servicePort: http
-
+      - path: /integrations
+        backend:
+          serviceName: integrator-service
+          servicePort: http
 

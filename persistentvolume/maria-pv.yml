@@ -4,6 +4,7 @@ metadata:
   name: maria-pv-volume
   labels:
     type: local
+  namespace: general
 spec:
   storageClassName: manual
   capacity:

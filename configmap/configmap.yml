@@ -4,5 +4,6 @@ metadata:
   name: general-configmap
   namespace: general
 data:
-  spring.datasource.url: jdbc:mysql://192.168.178.164:32768/authentication
+  datasource.url.authserver: jdbc:mysql://maria:3306/authentication
+  datasource.url.intergrator: jdbc:mysql://192.168.178.122:32562/integrations
   login.url: http://localhost:8082/login

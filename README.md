@@ -1,4 +1,10 @@
-#Enable add-ons
+#Start minikube, optional use --driver to specify the driver to use when creating a new cluster.
+minikube start
+
+#Enable add-ons fpr minikube
+minikube addons ingress dns
+
+#Enable add-ons fpr microk8s
 microk8s enable ingress dns
 
 #Create general namespace
@@ -6,7 +12,7 @@ kubectl create -f namespace/namespace-general.json
 
 #Create secret for Maria
 kubectl create secret generic maria-secret -n general \
---from-literal=dbpassword=username
+--from-literal=dbpassword=password
 
 #Create persistentVolume and persistentVolumeClaim for Maria
 kubectl apply -f persistentvolume/maria-pv.yml
@@ -14,17 +20,33 @@ kubectl apply -f persistentvolume/maria-pv.yml
 #Create service and deployment for Maria
 kubectl apply -f deployment/maria.yml
 
+#Expose maria deployment
+kubectl expose deployment -n general maria --type=LoadBalancer --name=maria-ext
+#Get external port and ip address that can be used to access maria from outside the cluster
+kubectl get services -n general maria-ext
+ip address show
+
 #Create secret for auth-server
 kubectl create secret generic auth-secret -n general \
---from-literal=dbusername=username \
---from-literal=dbpassword=secret \
---from-literal=login.url=http://192.168.178.122/login
+--from-literal=dbusername=authentication \
+--from-literal=dbpassword=secret
+
+kubectl create secret generic integrator-secret -n general \
+--from-literal=dbusername=intergrator \
+--from-literal=dbpassword=secret
 
 #Deploy auth-server
+database/authentication.sql
 kubectl apply -f deployment/auth-server
 kubectl apply -f service/auth-server.yml
 
-#Setup login-ui
+#Deploy login-ui
 kubectl apply -f deployment/login-ui.yml
 kubectl apply -f service/login-ui.yml
+
+#Deploy integrator
+database/integrations.sql
+kubectl apply -f deployment/integrator.yml
+kubectl apply -f service/integrator.yml
+
 

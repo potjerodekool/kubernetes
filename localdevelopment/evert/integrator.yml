@@ -1,0 +1,29 @@
+kind: Endpoints
+apiVersion: v1
+metadata:
+  name: integrator-service
+  namespace: general
+  labels:
+    app: integrator-service
+    environment: localdevelopment
+subsets:
+  - addresses:
+      - ip: 192.168.178.59
+    ports:
+      - port: 8080
+        name: http
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: integrator-service
+  labels:
+    app: integrator-server
+  namespace: general
+spec:
+  selector:
+    app: integrator-server
+  ports:
+    - name: http
+      targetPort: 8080
+      port: 8080

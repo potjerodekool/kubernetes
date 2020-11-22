@@ -1,38 +1,38 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: auth-server
+  name: integrator-server
   labels:
-   app: auth-server
+   app: integrator-server
   namespace: general
 spec:
   selector:
     matchLabels:  
-      app: auth-server
+      app: integrator-server
   template:
     metadata:
       labels: 
-        app: auth-server
+        app: integrator-server
     spec:
       containers:
-      - image: evert1981/auth-server:latest
+      - image: evert1981/integrator:latest
         imagePullPolicy: Always
-        name: auth-server
+        name: integrator
         env:
           - name: SPRING_DATASOURCE_URL
             valueFrom:
               configMapKeyRef:
                 name: general-configmap
-                key: datasource.url.authserver
+                key: datasource.url.intergrator
           - name: SPRING_DATASOURCE_USERNAME
             valueFrom:
               secretKeyRef:
-                name: auth-secret
+                name: integrator-secret
                 key: dbusername
           - name: SPRING_DATASOURCE_PASSWORD
             valueFrom:
               secretKeyRef:
-                name: auth-secret
+                name: integrator-secret
                 key: dbpassword
           - name: LOGIN_URL
             valueFrom:
