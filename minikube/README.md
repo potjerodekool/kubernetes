@@ -1,8 +1,17 @@
 #Install docker
-./install-docker.sh
+$ ./install-docker.sh
 
-#install minikube
-./install-minikube.sh
+#Check if docker is working
+$ docker --version
 
-#install kubectl
-./install-kubectl.sh
+#Install minikube
+$ ./install-minikube.sh
+
+#Check if minikube is working
+$ minikube version
+
+#Install kubectl
+$ ./install-kubectl.sh
+
+#Check if kubectl is working
+$ kubectl version
