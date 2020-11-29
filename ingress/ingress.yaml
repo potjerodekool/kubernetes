@@ -23,4 +23,8 @@ spec:
         backend:
           serviceName: integrator-service
           servicePort: http
+      - path: /dashboard
+        backend:
+          serviceName: dashboard-ui
+          servicePort: http
 

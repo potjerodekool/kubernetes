@@ -1,0 +1,23 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: dashboard-ui
+  labels:
+   app: dashboard-ui
+  namespace: general
+spec:
+  selector:
+    matchLabels:  
+      app: dashboard-ui
+  template:
+    metadata:
+      labels: 
+        app: dashboard-ui
+    spec:
+      containers:
+      - image: evert1981/dashboard-ui:latest
+        imagePullPolicy: Always
+        name: dashboard-ui
+        ports:
+        - containerPort: 80
+          name: http      

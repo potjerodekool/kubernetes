@@ -7,6 +7,10 @@ minikube addons ingress dns
 #Enable add-ons fpr microk8s
 microk8s enable ingress dns
 
+kubectl label nodes minikube external-lb=true
+kubectl label nodes minikube internal-lb=true
+kubectl create --namespace=kube-system secret generic traefik-cert --from-file=system/production/ssl/tls.cert --from-file=system/production/ssl/tls.key
+
 #Create general namespace
 kubectl create -f namespace/namespace-general.json
 
