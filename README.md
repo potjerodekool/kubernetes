@@ -1,16 +1,3 @@
-#Start minikube, optional use --driver to specify the driver to use when creating a new cluster.
-minikube start
-
-#Enable add-ons fpr minikube
-minikube addons ingress dns
-
-#Enable add-ons fpr microk8s
-microk8s enable ingress dns
-
-kubectl label nodes minikube external-lb=true
-kubectl label nodes minikube internal-lb=true
-kubectl create --namespace=kube-system secret generic traefik-cert --from-file=system/production/ssl/tls.cert --from-file=system/production/ssl/tls.key
-
 #Create general namespace
 kubectl create -f namespace/namespace-general.json
 
@@ -30,7 +17,6 @@ kubectl expose deployment -n general maria --type=LoadBalancer --name=maria-ext
 kubectl get services -n general maria-ext
 ip address show
 
-
 #Create JWT secret
 ## Generate random gerated base64 encoded jwtsecret and store it in the jwt-secret (replace myjwtsecret value)
 ## For your local cluster just use the value from application.properties
@@ -46,6 +32,9 @@ kubectl create secret generic integrator-secret -n general \
 --from-literal=dbusername=intergrator \
 --from-literal=dbpassword=secret
 
+#Create configmap
+kubectl apply -f configmap/configmap.yml 
+
 #Deploy auth-server
 database/authentication.sql
 kubectl apply -f deployment/auth-server
@@ -60,4 +49,5 @@ database/integrations.sql
 kubectl apply -f deployment/integrator.yml
 kubectl apply -f service/integrator.yml
 
-
+#Apply ingress
+kubectl apply -f ingress/ingress.yaml

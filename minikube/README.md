@@ -15,3 +15,7 @@ $ ./install-kubectl.sh
 
 #Check if kubectl is working
 $ kubectl version
+
+kubectl label nodes minikube external-lb=true
+kubectl label nodes minikube internal-lb=true
+kubectl create --namespace=kube-system secret generic traefik-cert --from-file=system/production/ssl/tls.cert --from-file=system/production/ssl/tls.key
