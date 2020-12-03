@@ -1,3 +1,2 @@
-#!/bin/bash
 #Create general namespace
-kubectl create -f namespace/namespace-general.json
+microk8s kubectl create -f ../namespace/namespace-general.json

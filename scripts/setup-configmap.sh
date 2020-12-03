@@ -1,7 +1,5 @@
-#!/bin/bash
-
 #Delete configmap
-kubectl delete configmap -n general general-configmap
+microk8s kubectl delete configmap -n general general-configmap
 
 #Create configmap
-kubectl apply -f configmap/configmap.yml
+microk8s kubectl apply -f ../configmap/configmap.yml

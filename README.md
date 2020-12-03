@@ -12,7 +12,7 @@ kubectl apply -f persistentvolume/maria-pv.yml
 kubectl apply -f deployment/maria.yml
 
 #Expose maria deployment
-kubectl expose deployment -n general maria --type=LoadBalancer --name=maria-ext
+kubectl expose deployment -n general maria --type=LoadBalancer --name=maria-ext --context devtest
 #Get external port and ip address that can be used to access maria from outside the cluster
 kubectl get services -n general maria-ext
 ip address show

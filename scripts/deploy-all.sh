@@ -1,5 +1,3 @@
-#!/bin/bash
-
 ./prepair-cluster.sh
 ./setup-mariadb.sh
 ./setup-configmap.sh
