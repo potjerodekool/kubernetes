@@ -1,0 +1,13 @@
+kind: Service
+apiVersion: v1
+metadata:
+  name: maria-ext
+  namespace: general
+spec:
+  selector:
+    app: maria
+  ports:
+    - protocol: TCP
+      port: 3306
+      nodePort: 32306
+  type: NodePort

@@ -10,7 +10,8 @@ kubectl create secret generic auth-secret -n general \
 --from-literal=dbpassword=secret
 
 #Deploy auth-server
-#database/authentication.sql
+.././sql-import.sql ../database/authentication.sql
+
 kubectl apply -f ../deployment/auth-server.yml
 kubectl apply -f ../service/auth-server.yml
 

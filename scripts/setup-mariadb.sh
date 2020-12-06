@@ -11,4 +11,8 @@ kubectl apply -f ../deployment/maria.yml
 #Wait until maria pod is ready
 ./checkpodready.sh maria
 
-sudo apt install mariadb-client-core-10.3 -y
+#Install maria client
+sudo apt install mariadb-client-core-10.3
+
+#Login to maria
+#mysql -uroot -h192.168.178.206 --port 32306 -psecret

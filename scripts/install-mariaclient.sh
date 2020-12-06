@@ -1,1 +1,0 @@
-sudo apt install mariadb-client-core-10.3 -y
