@@ -7,5 +7,3 @@ data:
   datasource.url.authserver: jdbc:mysql://maria:3306/authentication
   datasource.url.intergrator: jdbc:mysql://maria:3306/integrations
   login.url: http://localhost:8082/login
-
-kubectl get pods -n general --field-selector status.phase=Running | grep 'maria'

@@ -11,12 +11,12 @@ kubectl create secret generic auth-secret -n general \
 
 #Deploy auth-server
 #database/authentication.sql
-kubectl apply -f ../../deployment/auth-server
-kubectl apply -f ../../service/auth-server.yml
+kubectl apply -f ../deployment/auth-server.yml
+kubectl apply -f ../service/auth-server.yml
 
 #Deploy login-ui
-kubectl apply -f ../../deployment/login-ui.yml
-kubectl apply -f ../../service/login-ui.yml
+kubectl apply -f ../deployment/login-ui.yml
+kubectl apply -f ../service/login-ui.yml
 
-./checkpodready auth-server
-./checkpodready login-ui
+./checkpodready.sh auth-server
+./checkpodready.sh login-ui

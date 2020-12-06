@@ -4,11 +4,11 @@ kubectl create secret generic integrator-secret -n general \
 
 #Deploy integrator
 #database/integrations.sql
-kubectl apply -f ../../deployment/integrator.yml
-kubectl apply -f ../../service/integrator.yml
+kubectl apply -f ../deployment/integrator.yml
+kubectl apply -f ../service/integrator.yml
 
-kubectl apply -f ../../deployment/dashboard-ui.yml
-kubectl apply -f ../../service/dashboard-ui.yml
+kubectl apply -f ../deployment/dashboard-ui.yml
+kubectl apply -f ../service/dashboard-ui.yml
 
 ./checkpodready integrator-server
 ./checkpodready dashboard-ui

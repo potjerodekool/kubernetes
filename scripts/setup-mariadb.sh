@@ -9,4 +9,6 @@ kubectl apply -f ../persistentvolume/maria-pv.yml
 kubectl apply -f ../deployment/maria.yml
 
 #Wait until maria pod is ready
-./checkpodready maria
+./checkpodready.sh maria
+
+sudo apt install mariadb-client-core-10.3 -y
