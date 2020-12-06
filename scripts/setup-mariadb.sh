@@ -7,3 +7,6 @@ kubectl apply -f ../persistentvolume/maria-pv.yml
 
 #Create service and deployment for Maria
 kubectl apply -f ../deployment/maria.yml
+
+#Wait until maria pod is ready
+./checkpodready maria

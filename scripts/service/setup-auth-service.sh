@@ -17,3 +17,6 @@ kubectl apply -f ../../service/auth-server.yml
 #Deploy login-ui
 kubectl apply -f ../../deployment/login-ui.yml
 kubectl apply -f ../../service/login-ui.yml
+
+./checkpodready auth-server
+./checkpodready login-ui
