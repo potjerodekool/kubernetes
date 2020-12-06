@@ -1,1 +1,2 @@
-mysql -uroot -h192.168.178.206 --port 32306 -psecret < "$1"
+IP=$(kubectl describe service -n general maria-ext | grep IP: | awk '{print $2;}') 
+mysql -uroot -h$IP --port 32306 -ppassword < "$1"
