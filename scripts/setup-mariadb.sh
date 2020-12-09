@@ -12,7 +12,7 @@ kubectl apply -f ../deployment/maria.yml
 ./checkpodready.sh maria
 
 #Install maria client
-sudo apt install mariadb-client-core-10.3
+sudo apt install mariadb-client-core-10.3 -y
 
-#Login to maria
-#mysql -uroot -h192.168.178.206 --port 32306 -psecret
+#Make maria available outside of cluster.
+kubectl apply -f ../localdevelopment/maria.yml
