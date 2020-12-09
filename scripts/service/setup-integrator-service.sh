@@ -1,5 +1,7 @@
+kubectl delete secret -n general integrator-secret
+
 kubectl create secret generic integrator-secret -n general \
---from-literal=dbusername=intergrator \
+--from-literal=dbusername=integrator \
 --from-literal=dbpassword=secret
 
 #Deploy integrator
