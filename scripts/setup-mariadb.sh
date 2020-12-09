@@ -15,4 +15,4 @@ kubectl apply -f ../deployment/maria.yml
 sudo apt install mariadb-client-core-10.3 -y
 
 #Make maria available outside of cluster.
-kubectl apply -f ../localdevelopment/maria.yml
+#kubectl apply -f ../localdevelopment/maria.yml

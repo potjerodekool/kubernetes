@@ -1,5 +1,7 @@
-IP=$(kubectl describe service -n general maria-ext | grep IP: | awk '{print $2;}')
+#IP=$(kubectl describe service -n general maria-ext | grep IP: | awk '{print $2;}')
 
-kubectl get endpoints -n general maria-ext -o jsonpath={.subsets[0].addresses[0].ip}
+IP=$(kubectl get endpoints -n general maria-ext -o jsonpath={.subsets[0].addresses[0].ip})
 
-mysql -uroot -h$IP --port 32306 -ppassword < "$1"
+echo "Connect to maria at $IP"
+
+mysql -uroot -h$IP -ppassword < "$1"
