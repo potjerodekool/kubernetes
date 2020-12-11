@@ -11,8 +11,20 @@ kubectl apply -f ../deployment/maria.yml
 #Wait until maria pod is ready
 ./checkpodready.sh maria
 
+poll=true
+
+while [ $poll == true ]
+do
+  echo "Waiting maria endpoint $1"
+  sleep 5
+  RESULT=$(kubectl get endpoints -n general | grep "maria")
+
+  if [[ $RESULT == maria* ]]
+  then
+    echo "maria endpoint is ready"
+    poll=false
+  fi
+done
+
 #Install maria client
 sudo apt install mariadb-client-core-10.3 -y
-
-#Make maria available outside of cluster.
-#kubectl apply -f ../localdevelopment/maria.yml
