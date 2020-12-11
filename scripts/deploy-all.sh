@@ -4,5 +4,3 @@
 ./apply-ingress.sh
 ./service/setup-auth-service.sh
 ./service/setup-integrator-service.sh
-
-kubectl delete endpoints -n general maria-ext
