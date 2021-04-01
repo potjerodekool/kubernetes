@@ -23,7 +23,7 @@ metadata:
     environment: localdevelopment
 subsets:
   - addresses:
-      - ip: 192.168.178.59
+      - ip: 192.168.178.179
     ports:
-      - port: 8080
+      - port: 80
         name: http
